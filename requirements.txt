@@ -1,0 +1,6 @@
+gpiozero==1.6.2
+inputs==0.5
+numpy==1.16.2
+picamera==1.13
+RPi.GPIO==0.7.0
+pigpio==1.78
