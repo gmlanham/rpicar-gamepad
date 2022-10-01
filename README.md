@@ -27,7 +27,7 @@
 
   crontab -e
   
-    @reboot python3 /home/m_lan/rpicar-backup/rpicar_modularized_F710s.py &   #runs on boot
+    @reboot python3 /home/m_lan/rpicar-backup/rpicar_F710.py &   #runs on boot
     
 
   gedit .bashrc
