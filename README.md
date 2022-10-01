@@ -14,16 +14,25 @@
 13. edit system files to run scripts headless, automatically on boot:
 
   sudo gedit /etc/xdg/lxsession/LXDE-pi/autostart
+  
     @lxpanel --profile LXDE-pi
+    
     @pcmanfm --desktop --profile LXDE-pi
+    
     @lxterminal     #open terminal on boot
+    
     @xscreensaver -no-splash
+    
 
   crontab -e
+  
     @reboot python3 /home/m_lan/rpicar-backup/rpicar_modularized_F710s.py &   #runs on boot
+    
 
   gedit .bashrc
+  
     sudo pkill -f webstreaming_module.py      #pkill before next line runs, to avoid error when camera is already on.
+    
     python3 /home/m_lan/rpicar-backup/webstreaming_module.py    #runs every time a new terminal opens.
 
 
