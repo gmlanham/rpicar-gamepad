@@ -3,7 +3,7 @@
 2. Control motion of rpicar using gamepad controller. Tested with Logitech Rumblepad2 (USB) and Logitech F710 (wireless). 
 3. Webstreaming_module is independent script, using picamera. 
 4. Both rpicar and webstreaming scripts run from terminal command line.
-5. For run on boot, load the rpicar_modularized_F710.py using crontab, but it also runs from terminal or .bashrc.
+5. For run on boot, load the rpicar_F710.py using crontab, but it also runs from terminal or .bashrc.
 6. Run the webstreaming_moudle.py using terminal with .bashrc.
 7. The Logiech controller 'Back' button exits the rpicar program. 
 8. The controller 'Start' button starts the program. 
