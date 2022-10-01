@@ -9,7 +9,7 @@
 8. The controller 'Start' button starts the program. 
 9. On terminal ctrl+c exits the webstreaming program.
 10. The left stick, x-direction rotates the camera servo. 
-11. The left stick y-direction moves the left wheels forward andbackward. 
+11. The left stick y-direction moves the left wheels forward and backward. 
 12. The right stick y-direction moves the righ wheel.
 
 Enjoy,
