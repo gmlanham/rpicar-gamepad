@@ -13,6 +13,7 @@
 12. The right stick y-direction moves the righ wheel.
 13. edit system files to run scripts headless, automatically on boot:
 
+
   sudo gedit /etc/xdg/lxsession/LXDE-pi/autostart
   
     @lxpanel --profile LXDE-pi
