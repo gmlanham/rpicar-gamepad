@@ -27,12 +27,12 @@
     
   crontab -e
   
-    @reboot python3 /home/m_lan/rpicar-backup/rpicar_F710.py &   #runs on boot    
+    @reboot python3 /home/m_lan/rpicar-gamepad/rpicar_F710.py &   #runs on boot    
                                                
   gedit .bashrc
 
     sudo pkill -f webstreaming_module.py      #pkill before next line runs, to avoid error when camera is already on.    
-    python3 /home/m_lan/rpicar-backup/webstreaming_module.py    #runs every time a new terminal opens.
+    python3 /home/m_lan/rpicar-gamepad/webstreaming_module.py    #runs every time a new terminal opens.
 
 Enjoy,
 mike
