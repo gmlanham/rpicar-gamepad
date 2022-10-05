@@ -87,11 +87,12 @@ while True:
                 if ((event.state-327.68)/327.68 < -speed_lower_limit):
                     motor_module.motor_left(1, left_forward, left_speed_set-right_speed_set) # Y rotational transform to make forward straight up
                     motor_module.motor_right(1, right_forward, right_speed_set+left_speed_set) # X rotational transform to make forward straight up
+                elif ((event.state-327.68)/327.68 > speed_lower_limit):  
                     motor_module.motor_left(1, left_backward, left_speed_set-right_speed_set)
                     motor_module.motor_right(1, right_backward, right_speed_set+left_speed_set)
                 else:
                     motor_module.motorStop()                            #this stops motors after each time cycle, when commented-out continous motor action allowed.
-            
+                       
             if event.code == 'ABS_X':                                   #axis2 Lstick Horiz, camera servo
                 deltaX=(event.state)/32768
                 if abs(deltaX)> 0.1:                  
