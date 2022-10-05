@@ -39,7 +39,7 @@ servo.value=0
 sleep(1)
 
 speed_lower_limit = 1.0
-
+speed_set = 1.0
 pads = inputs.devices.gamepads
 
 left_forward  = 1
@@ -47,9 +47,6 @@ left_backward = 0
 
 right_forward = 0
 right_backward= 1
-
-right_speed_set = 0.0
-left_speed_set = 0.0
 
 if len(pads) == 0:
     raise Exception("Couldn't find any Gamepads!")
@@ -72,28 +69,28 @@ while True:
                 time.sleep(0.01)
 
             if event.code == 'ABS_RX':                                     #axis3 Rstick, steer                
-                right_speed_set = (abs(event.state)/350)/2                 #action: set steering speed, slower
+                speed_set = (abs(event.state)/350)                         #action: set steering speed
                 if ((event.state-327.68)/327.68 < -speed_lower_limit):     
-                    motor_module.motor_right(1, right_forward, right_speed_set+left_speed_set)
-                    motor_module.motor_left(1, left_backward, left_speed_set+right_speed_set)
+                    motor_module.motor_right(1, right_forward,  speed_set) #for turning rotate left and right in opposite directions
+                    motor_module.motor_left(1, left_backward,  speed_set)
                 elif ((event.state-327.68)/327.68 > speed_lower_limit):
-                    motor_module.motor_right(1, right_backward, right_speed_set+left_speed_set)
-                    motor_module.motor_left(1, left_forward, left_speed_set+right_speed_set)
+                    motor_module.motor_right(1, right_backward,  speed_set)
+                    motor_module.motor_left(1, left_forward,  speed_set)
                 else:
                     motor_module.motorStop()
                     
             if event.code == 'ABS_RY':                                    #axis1 Rstick Vert, move straight
-                left_speed_set = (abs(event.state)/350)                   #action: set motor speed
+                speed_set = (abs(event.state)/350)                        #action: set motor speed
                 if ((event.state-327.68)/327.68 < -speed_lower_limit):
-                    motor_module.motor_left(1, left_forward, left_speed_set-right_speed_set) # Y rotational transform to make forward straight up
-                    motor_module.motor_right(1, right_forward, right_speed_set+left_speed_set) # X rotational transform to make forward straight up
+                    motor_module.motor_left(1, left_forward,  speed_set) 
+                    motor_module.motor_right(1, right_forward,  speed_set) 
                 elif ((event.state-327.68)/327.68 > speed_lower_limit):  
-                    motor_module.motor_left(1, left_backward, left_speed_set-right_speed_set)
-                    motor_module.motor_right(1, right_backward, right_speed_set+left_speed_set)
+                    motor_module.motor_left(1, left_backward,  speed_set)
+                    motor_module.motor_right(1, right_backward,  speed_set)
                 else:
-                    motor_module.motorStop()                            #this stops motors after each time cycle, when commented-out continous motor action allowed.
-                       
-            if event.code == 'ABS_X':                                   #axis2 Lstick Horiz, camera servo
+                    motor_module.motorStop()                             #this stops motors after each time cycle, when commented-out continous motor action allowed.
+            
+            if event.code == 'ABS_X':                                    #axis2 Lstick Horiz, camera servo
                 deltaX=(event.state)/32768
                 if abs(deltaX)> 0.1:                  
                     servo.value= -deltaX
