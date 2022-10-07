@@ -21,7 +21,7 @@
     
     @pcmanfm --desktop --profile LXDE-pi
     
-    @lxterminal     #open terminal on boot
+    @lxterminal
     
     @xscreensaver -no-splash
     
